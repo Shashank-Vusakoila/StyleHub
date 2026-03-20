@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  turbopack: {},
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
@@ -7,14 +8,12 @@ const nextConfig = {
       { protocol: 'https', hostname: 'firebasestorage.googleapis.com' },
       { protocol: 'https', hostname: 'm.media-amazon.com' },
     ],
-    formats: ['image/avif', 'image/webp'],   // serve modern formats = 40% smaller
-    minimumCacheTTL: 86400,                   // cache images 24hrs
-    deviceSizes: [640, 750, 828, 1080, 1200], // only generate needed sizes
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 86400,
+    deviceSizes: [640, 750, 828, 1080, 1200],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
-  // Compress all responses
   compress: true,
-  // Power header for caching
   async headers() {
     return [
       {
